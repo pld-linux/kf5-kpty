@@ -1,18 +1,18 @@
 # TODO:
 # - dir /usr/include/KF5 not packaged
 # /usr/share/kf5 not packaged
-%define		kdeframever	5.4
+%define		kdeframever	5.10
 %define		qtver		5.3.2
 %define		kfname		kpty
 
 Summary:	Interfacing with pseudo terminal devices
 Name:		kf5-%{kfname}
-Version:	5.4.0
+Version:	5.10.0
 Release:	0.1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	2de8c2ba7ae950995c6a842176e8f7a1
+# Source0-md5:	276a699780172cec679863ea53a24324
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
@@ -21,6 +21,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	kf5-extra-cmake-modules >= 1.4.0
 BuildRequires:	kf5-kcoreaddons-devel >= %{version}
 BuildRequires:	kf5-ki18n-devel >= %{version}
+BuildRequires:	libutempter-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -74,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %ghost %{_libdir}/libKF5Pty.so.5
-%attr(755,root,root) %{_libdir}/libKF5Pty.so.5.4.0
+%attr(755,root,root) %{_libdir}/libKF5Pty.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
