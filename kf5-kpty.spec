@@ -1,15 +1,15 @@
-%define		kdeframever	5.79
+%define		kdeframever	5.80
 %define		qtver		5.9.0
 %define		kfname		kpty
 
 Summary:	Interfacing with pseudo terminal devices
 Name:		kf5-%{kfname}
-Version:	5.79.0
+Version:	5.80.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	49f5d2ff5cbb2259aa599eeacc42408b
+# Source0-md5:	1f755eb3ff2e28e4d583e1f8596fe396
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kfname}5.lang
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %ghost %{_libdir}/libKF5Pty.so.5
+%ghost %{_libdir}/libKF5Pty.so.5
 %attr(755,root,root) %{_libdir}/libKF5Pty.so.*.*
 %{_datadir}/qlogging-categories5/kpty.categories
 
@@ -80,5 +80,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/KPty
 %{_includedir}/KF5/kpty_version.h
 %{_libdir}/cmake/KF5Pty
-%attr(755,root,root) %{_libdir}/libKF5Pty.so
+%{_libdir}/libKF5Pty.so
 %{qt5dir}/mkspecs/modules/qt_KPty.pri
