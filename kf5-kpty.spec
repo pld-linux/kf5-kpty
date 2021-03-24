@@ -1,5 +1,5 @@
 %define		kdeframever	5.80
-%define		qtver		5.9.0
+%define		qtver		5.14.0
 %define		kfname		kpty
 
 Summary:	Interfacing with pseudo terminal devices
@@ -13,8 +13,7 @@ Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{ve
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
-BuildRequires:	cmake >= 2.8.12
-BuildRequires:	gettext-devel
+BuildRequires:	cmake >= 3.5
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-kcoreaddons-devel >= %{version}
 BuildRequires:	kf5-ki18n-devel >= %{version}
@@ -23,7 +22,10 @@ BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	Qt5Core >= %{qtver}
 Requires:	kf5-dirs
+Requires:	kf5-kcoreaddons >= %{version}
+Requires:	kf5-ki18n >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt5dir		%{_libdir}/qt5
@@ -38,6 +40,7 @@ Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	kf5-kcoreaddons-devel >= %{version}
 
 %description devel
 Header files for %{kfname} development.
