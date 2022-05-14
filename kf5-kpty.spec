@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.93
+%define		kdeframever	5.94
 %define		qtver		5.15.2
 %define		kfname		kpty
 
 Summary:	Interfacing with pseudo terminal devices
 Name:		kf5-%{kfname}
-Version:	5.93.0
+Version:	5.94.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	af81a0d1af503a4da6881e3e3ebb2f23
+# Source0-md5:	8c9e66d27034ab827a7bff258c26ac40
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
