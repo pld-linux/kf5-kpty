@@ -1,21 +1,21 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.114
+%define		kdeframever	5.249.0
 %define		qtver		5.15.2
 %define		kfname		kpty
 
 Summary:	Interfacing with pseudo terminal devices
 Name:		kf5-%{kfname}
-Version:	5.114.0
-Release:	1
+Version:	5.249.0
+Release:	0.1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	2bcec049a4ef13960f59e128d275ee34
+Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	6088af6bc96efb846a651095bae43812
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5Test-devel >= %{qtver}
+BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6Test-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-kcoreaddons-devel >= %{version}
@@ -25,13 +25,13 @@ BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	Qt5Core >= %{qtver}
+Requires:	Qt6Core >= %{qtver}
 Requires:	kf5-dirs
 Requires:	kf5-kcoreaddons >= %{version}
 Requires:	kf5-ki18n >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt5dir		%{_libdir}/qt5
+%define		qt6dir		%{_libdir}/qt6
 
 %description
 This library provides primitives to interface with pseudo terminal
@@ -71,7 +71,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-%find_lang %{kfname}5
+%find_lang %{kfname}6
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -79,16 +79,15 @@ rm -rf $RPM_BUILD_ROOT
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{kfname}5.lang
+%files -f %{kfname}6.lang
 %defattr(644,root,root,755)
 %doc README.md
-%ghost %{_libdir}/libKF5Pty.so.5
-%attr(755,root,root) %{_libdir}/libKF5Pty.so.*.*
-%{_datadir}/qlogging-categories5/kpty.categories
+%ghost %{_libdir}/libKF6Pty.so.6
+%attr(755,root,root) %{_libdir}/libKF6Pty.so.*.*
+%{_datadir}/qlogging-categories6/kpty.categories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/KPty
-%{_libdir}/cmake/KF5Pty
-%{_libdir}/libKF5Pty.so
-%{qt5dir}/mkspecs/modules/qt_KPty.pri
+%{_includedir}/KF6/KPty
+%{_libdir}/cmake/KF6Pty
+%{_libdir}/libKF6Pty.so
